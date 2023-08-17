@@ -27,7 +27,6 @@
         <module>alinesno-infra-base-pay-adapter</module> <!-- 适配层 -->
         <module>alinesno-infra-base-pay-api</module>  <!-- 接口服务 -->
         <module>alinesno-infra-base-pay-client</module>  <!-- 对外引用 -->
-        <module>alinesno-infra-base-pay-third</module>  <!-- third party引用 -->
         <module>alinesno-infra-base-pay-boot</module>  <!-- 启动服务 -->
 
         <!-- 前端服务
