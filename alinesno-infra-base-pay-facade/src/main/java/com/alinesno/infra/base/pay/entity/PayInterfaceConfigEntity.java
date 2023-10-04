@@ -1,10 +1,10 @@
 package com.alinesno.infra.base.pay.entity;
 
-import java.math.BigDecimal;
-
 import com.alinesno.infra.common.facade.mapper.entity.InfraBaseEntity;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableName;
+
+import java.math.BigDecimal;
 
 /**
  * 功能名：支付接口配置实体类

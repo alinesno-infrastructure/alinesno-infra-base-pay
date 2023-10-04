@@ -1,15 +1,5 @@
 package com.alinesno.infra.base.pay;
 
-import java.util.List;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.ImportAutoConfiguration;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.core.annotation.Order;
-
 import com.egzosn.pay.spring.boot.core.MerchantPayServiceManager;
 import com.egzosn.pay.spring.boot.core.PayServiceConfigurer;
 import com.egzosn.pay.spring.boot.core.PayServiceManager;
@@ -18,18 +8,16 @@ import com.egzosn.pay.spring.boot.core.configurers.MerchantDetailsServiceConfigu
 import com.egzosn.pay.spring.boot.core.configurers.PayMessageConfigurer;
 import com.egzosn.pay.spring.boot.core.merchant.MerchantDetailsService;
 import com.egzosn.pay.spring.boot.core.merchant.PaymentPlatform;
-import com.egzosn.pay.spring.boot.core.provider.merchant.platform.AliPaymentPlatform;
-import com.egzosn.pay.spring.boot.core.provider.merchant.platform.FuiouPaymentPlatform;
-import com.egzosn.pay.spring.boot.core.provider.merchant.platform.PaymentPlatforms;
-import com.egzosn.pay.spring.boot.core.provider.merchant.platform.PayoneerPaymentPlatform;
-import com.egzosn.pay.spring.boot.core.provider.merchant.platform.PaypalPaymentPlatform;
-import com.egzosn.pay.spring.boot.core.provider.merchant.platform.PaypalV2PaymentPlatform;
-import com.egzosn.pay.spring.boot.core.provider.merchant.platform.UnionPaymentPlatform;
-import com.egzosn.pay.spring.boot.core.provider.merchant.platform.WxPaymentPlatform;
-import com.egzosn.pay.spring.boot.core.provider.merchant.platform.WxV3CombinePaymentPlatform;
-import com.egzosn.pay.spring.boot.core.provider.merchant.platform.WxV3PaymentPlatform;
-import com.egzosn.pay.spring.boot.core.provider.merchant.platform.WxV3ProfitSharingPlatform;
-import com.egzosn.pay.spring.boot.core.provider.merchant.platform.YoudianPaymentPlatform;
+import com.egzosn.pay.spring.boot.core.provider.merchant.platform.*;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.ImportAutoConfiguration;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.core.annotation.Order;
+
+import java.util.List;
 
 /**
  * 支付转载配置
