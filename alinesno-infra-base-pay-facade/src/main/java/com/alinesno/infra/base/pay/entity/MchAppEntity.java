@@ -1,5 +1,8 @@
 package com.alinesno.infra.base.pay.entity;
 
+import com.gitee.sunchenbin.mybatis.actable.annotation.ColumnComment;
+import com.gitee.sunchenbin.mybatis.actable.annotation.ColumnType;
+import lombok.Data;
 import cn.afterturn.easypoi.excel.annotation.Excel;
 import com.alinesno.infra.common.facade.mapper.entity.InfraBaseEntity;
 import com.baomidou.mybatisplus.annotation.TableField;
@@ -32,6 +35,7 @@ import com.baomidou.mybatisplus.annotation.TableName;
  * 创建时间：2021-07-29 13:37:59
  */
 @TableName("mch_app")
+@Data
 public class MchAppEntity extends InfraBaseEntity {
 
     // fields
@@ -41,6 +45,8 @@ public class MchAppEntity extends InfraBaseEntity {
      */
     @Excel(name = "应用ID")
     @TableField("app_id")
+	@ColumnType(length=50)
+	@ColumnComment("应用ID")
     private String appId;
 
     /**
@@ -48,6 +54,8 @@ public class MchAppEntity extends InfraBaseEntity {
      */
     @Excel(name = "应用名称")
     @TableField("app_name")
+	@ColumnType(length=50)
+	@ColumnComment("应用名称")
     private String appName;
 
     /**
@@ -55,6 +63,8 @@ public class MchAppEntity extends InfraBaseEntity {
      */
     @Excel(name = "商户号")
     @TableField("mch_no")
+	@ColumnType(length=20)
+	@ColumnComment("商户号")
     private String mchNo;
 
     /**
@@ -62,6 +72,8 @@ public class MchAppEntity extends InfraBaseEntity {
      */
     @Excel(name = "应用状态: 0-停用, 1-正常")
     @TableField("state")
+	@ColumnType(length=2)
+	@ColumnComment("应用状态:")
     private Long state;
 
     /**
@@ -69,6 +81,8 @@ public class MchAppEntity extends InfraBaseEntity {
      */
     @Excel(name = "应用私钥")
     @TableField("app_secret")
+	@ColumnType(length=32)
+	@ColumnComment("应用私钥")
     private String appSecret;
 
     /**
@@ -76,6 +90,8 @@ public class MchAppEntity extends InfraBaseEntity {
      */
     @Excel(name = "pay_if_code")
     @TableField("pay_if_code")
+	@ColumnType(length=50)
+	@ColumnComment("支付接口code")
     private String payIfCode;
 
     /**
@@ -83,6 +99,8 @@ public class MchAppEntity extends InfraBaseEntity {
      */
     @Excel(name = "isv_params")
     @TableField(value = "isv_params", typeHandler = com.baomidou.mybatisplus.extension.handlers.JacksonTypeHandler.class)
+	@ColumnType(length=255)
+	@ColumnComment("支付接口参数配置")
     private String isvParams;
 
     /**
@@ -90,75 +108,7 @@ public class MchAppEntity extends InfraBaseEntity {
      */
     @Excel(name = "备注")
     @TableField("remark")
+	@ColumnType(length=255)
+	@ColumnComment("备注")
     private String remark;
-
-    // getter and setter
-
-    public String getAppId() {
-        return this.appId;
-    }
-
-    public MchAppEntity setAppId(String appId) {
-        this.appId = appId;
-        return this;
-    }
-
-    public String getAppName() {
-        return this.appName;
-    }
-
-    public MchAppEntity setAppName(String appName) {
-        this.appName = appName;
-        return this;
-    }
-
-    public String getMchNo() {
-        return this.mchNo;
-    }
-
-    public MchAppEntity setMchNo(String mchNo) {
-        this.mchNo = mchNo;
-        return this;
-    }
-
-    public Long getState() {
-        return this.state;
-    }
-
-    public MchAppEntity setState(Long state) {
-        this.state = state;
-        return this;
-    }
-
-    public String getAppSecret() {
-        return this.appSecret;
-    }
-
-    public MchAppEntity setAppSecret(String appSecret) {
-        this.appSecret = appSecret;
-        return this;
-    }
-
-    public String getPayIfCode() {
-        return payIfCode;
-    }
-
-    public MchAppEntity setPayIfCode(String payIfCode) {
-        this.payIfCode = payIfCode;
-        return this;
-    }
-
-    public String getIsvParams() {
-        return isvParams;
-    }
-
-    public MchAppEntity setIsvParams(String isvParams) {
-        this.isvParams = isvParams;
-        return this;
-    }
-
-    public String getRemark() {
-        return this.remark;
-    }
-
 }

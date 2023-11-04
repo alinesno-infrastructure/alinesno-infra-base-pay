@@ -1,5 +1,8 @@
 package com.alinesno.infra.base.pay.entity;
 
+import com.gitee.sunchenbin.mybatis.actable.annotation.ColumnComment;
+import com.gitee.sunchenbin.mybatis.actable.annotation.ColumnType;
+import lombok.Data;
 import cn.afterturn.easypoi.excel.annotation.Excel;
 import com.alinesno.infra.common.facade.mapper.entity.InfraBaseEntity;
 import com.baomidou.mybatisplus.annotation.TableField;
@@ -16,6 +19,7 @@ import java.math.BigDecimal;
  * @version 1.0.0
  */
 @TableName("mch_pay_passage")
+@Data
 public class MchPayPassageEntity extends InfraBaseEntity {
 
     /**
@@ -23,6 +27,8 @@ public class MchPayPassageEntity extends InfraBaseEntity {
      */
     @Excel(name = "商户号")
     @TableField("mch_no")
+	@ColumnType(length=255)
+	@ColumnComment("商户号")
     private String mchNo;
 
     /**
@@ -30,6 +36,8 @@ public class MchPayPassageEntity extends InfraBaseEntity {
      */
     @Excel(name = "应用ID")
     @TableField("app_id")
+	@ColumnType(length=255)
+	@ColumnComment("应用ID")
     private String appId;
 
     /**
@@ -37,6 +45,8 @@ public class MchPayPassageEntity extends InfraBaseEntity {
      */
     @Excel(name = "支付接口")
     @TableField("if_code")
+	@ColumnType(length=255)
+	@ColumnComment("支付接口")
     private String ifCode;
 
     /**
@@ -44,6 +54,8 @@ public class MchPayPassageEntity extends InfraBaseEntity {
      */
     @Excel(name = "支付方式")
     @TableField("way_code")
+	@ColumnType(length=255)
+	@ColumnComment("支付方式")
     private String wayCode;
 
     /**
@@ -51,6 +63,8 @@ public class MchPayPassageEntity extends InfraBaseEntity {
      */
     @Excel(name = "支付方式费率")
     @TableField("rate")
+	@ColumnType(length=255)
+	@ColumnComment("支付方式费率")
     private BigDecimal rate;
 
     /**
@@ -58,6 +72,8 @@ public class MchPayPassageEntity extends InfraBaseEntity {
      */
     @Excel(name = "风控数据")
     @TableField("risk_config")
+	@ColumnType(length=255)
+	@ColumnComment("风控数据")
     private String riskConfig;
 
     /**
@@ -65,70 +81,7 @@ public class MchPayPassageEntity extends InfraBaseEntity {
      */
     @Excel(name = "状态: 0-停用, 1-启用")
     @TableField("state")
+	@ColumnType(length=255)
+	@ColumnComment("状态:")
     private Long state;
-
-    // Getter and Setter methods
-
-    public String getMchNo() {
-        return this.mchNo;
-    }
-
-    public MchPayPassageEntity setMchNo(String mchNo) {
-        this.mchNo = mchNo;
-        return this;
-    }
-
-    public String getAppId() {
-        return this.appId;
-    }
-
-    public MchPayPassageEntity setAppId(String appId) {
-        this.appId = appId;
-        return this;
-    }
-
-    public String getIfCode() {
-        return this.ifCode;
-    }
-
-    public MchPayPassageEntity setIfCode(String ifCode) {
-        this.ifCode = ifCode;
-        return this;
-    }
-
-    public String getWayCode() {
-        return this.wayCode;
-    }
-
-    public MchPayPassageEntity setWayCode(String wayCode) {
-        this.wayCode = wayCode;
-        return this;
-    }
-
-    public BigDecimal getRate() {
-        return this.rate;
-    }
-
-    public MchPayPassageEntity setRate(BigDecimal rate) {
-        this.rate = rate;
-        return this;
-    }
-
-    public String getRiskConfig() {
-        return this.riskConfig;
-    }
-
-    public MchPayPassageEntity setRiskConfig(String riskConfig) {
-        this.riskConfig = riskConfig;
-        return this;
-    }
-
-    public Long getState() {
-        return this.state;
-    }
-
-    public MchPayPassageEntity setState(Long state) {
-        this.state = state;
-        return this;
-    }
 }

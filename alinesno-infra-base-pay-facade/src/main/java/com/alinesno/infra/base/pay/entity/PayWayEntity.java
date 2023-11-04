@@ -1,5 +1,8 @@
 package com.alinesno.infra.base.pay.entity;
 
+import com.gitee.sunchenbin.mybatis.actable.annotation.ColumnComment;
+import com.gitee.sunchenbin.mybatis.actable.annotation.ColumnType;
+import lombok.Data;
 import cn.afterturn.easypoi.excel.annotation.Excel;
 import com.alinesno.infra.common.facade.mapper.entity.InfraBaseEntity;
 import com.baomidou.mybatisplus.annotation.TableField;
@@ -22,6 +25,7 @@ import com.baomidou.mybatisplus.annotation.TableName;
  * @version 1.0.0
  */
 @TableName("pay_way")
+@Data
 public class PayWayEntity extends InfraBaseEntity {
 
     /**
@@ -29,6 +33,8 @@ public class PayWayEntity extends InfraBaseEntity {
      */
     @TableField("way_code")
     @Excel(name = "支付方式代码 例如：wxpay_jsapi")
+	@ColumnType(length=255)
+	@ColumnComment("支付方式代码，例如：wxpay_jsapi")
     private String wayCode;
 
     /**
@@ -36,24 +42,7 @@ public class PayWayEntity extends InfraBaseEntity {
      */
     @TableField("way_name")
     @Excel(name = "支付方式名称")
+	@ColumnType(length=255)
+	@ColumnComment("支付方式名称")
     private String wayName;
-
-    // getter and setter methods
-    public String getWayCode() {
-        return this.wayCode;
-    }
-
-    public PayWayEntity setWayCode(String wayCode) {
-        this.wayCode = wayCode;
-        return this;
-    }
-
-    public String getWayName() {
-        return this.wayName;
-    }
-
-    public PayWayEntity setWayName(String wayName) {
-        this.wayName = wayName;
-        return this;
-    }
 }

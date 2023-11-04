@@ -1,5 +1,8 @@
 package com.alinesno.infra.base.pay.entity;
 
+import com.gitee.sunchenbin.mybatis.actable.annotation.ColumnComment;
+import com.gitee.sunchenbin.mybatis.actable.annotation.ColumnType;
+import lombok.Data;
 import cn.afterturn.easypoi.excel.annotation.Excel;
 import com.alinesno.infra.common.facade.mapper.entity.InfraBaseEntity;
 import com.baomidou.mybatisplus.annotation.TableField;
@@ -16,6 +19,7 @@ import java.util.Date;
  * @version 1.0.0
  */
 @TableName("mch_notify_record")
+@Data
 public class MchNotifyRecordEntity extends InfraBaseEntity {
 
     /**
@@ -23,6 +27,8 @@ public class MchNotifyRecordEntity extends InfraBaseEntity {
      */
     @Excel(name = "商户通知记录ID")
     @TableField("notify_id")
+	@ColumnType(length=255)
+	@ColumnComment("商户通知记录ID")
     private Long notifyId;
 
     /**
@@ -30,6 +36,8 @@ public class MchNotifyRecordEntity extends InfraBaseEntity {
      */
     @Excel(name = "订单ID")
     @TableField("order_id")
+	@ColumnType(length=255)
+	@ColumnComment("订单ID")
     private String orderId;
 
     /**
@@ -37,6 +45,8 @@ public class MchNotifyRecordEntity extends InfraBaseEntity {
      */
     @Excel(name = "订单类型:1-支付,2-退款")
     @TableField("order_type")
+	@ColumnType(length=255)
+	@ColumnComment("订单类型:1-支付,2-退款")
     private Long orderType;
 
     /**
@@ -44,6 +54,8 @@ public class MchNotifyRecordEntity extends InfraBaseEntity {
      */
     @Excel(name = "商户订单号")
     @TableField("mch_order_no")
+	@ColumnType(length=255)
+	@ColumnComment("商户订单号")
     private String mchOrderNo;
 
     /**
@@ -51,6 +63,8 @@ public class MchNotifyRecordEntity extends InfraBaseEntity {
      */
     @Excel(name = "商户号")
     @TableField("mch_no")
+	@ColumnType(length=255)
+	@ColumnComment("商户号")
     private String mchNo;
 
     /**
@@ -58,6 +72,8 @@ public class MchNotifyRecordEntity extends InfraBaseEntity {
      */
     @Excel(name = "服务商号")
     @TableField("isv_no")
+	@ColumnType(length=255)
+	@ColumnComment("服务商号")
     private String isvNo;
 
     /**
@@ -65,6 +81,8 @@ public class MchNotifyRecordEntity extends InfraBaseEntity {
      */
     @Excel(name = "应用ID")
     @TableField("app_id")
+	@ColumnType(length=255)
+	@ColumnComment("应用ID")
     private String appId;
 
     /**
@@ -72,6 +90,8 @@ public class MchNotifyRecordEntity extends InfraBaseEntity {
      */
     @Excel(name = "通知地址")
     @TableField("notify_url")
+	@ColumnType(length=255)
+	@ColumnComment("通知地址")
     private String notifyUrl;
 
     /**
@@ -79,6 +99,8 @@ public class MchNotifyRecordEntity extends InfraBaseEntity {
      */
     @Excel(name = "通知响应结果")
     @TableField("res_result")
+	@ColumnType(length=255)
+	@ColumnComment("通知响应结果")
     private String resResult;
 
     /**
@@ -86,6 +108,8 @@ public class MchNotifyRecordEntity extends InfraBaseEntity {
      */
     @Excel(name = "通知次数")
     @TableField("notify_count")
+	@ColumnType(length=255)
+	@ColumnComment("通知次数")
     private Long notifyCount;
 
     /**
@@ -93,6 +117,8 @@ public class MchNotifyRecordEntity extends InfraBaseEntity {
      */
     @Excel(name = "最大通知次数, 默认6次")
     @TableField("notify_count_limit")
+	@ColumnType(length=255)
+	@ColumnComment("最大通知次数,")
     private Long notifyCountLimit;
 
     /**
@@ -100,6 +126,8 @@ public class MchNotifyRecordEntity extends InfraBaseEntity {
      */
     @Excel(name = "通知状态,1-通知中,2-通知成功,3-通知失败")
     @TableField("state")
+	@ColumnType(length=255)
+	@ColumnComment("通知状态,1-通知中,2-通知成功,3-通知失败")
     private Long state;
 
     /**
@@ -107,125 +135,7 @@ public class MchNotifyRecordEntity extends InfraBaseEntity {
      */
     @Excel(name = "最后一次通知时间", exportFormat = "yyyy-MM-dd")
     @TableField("last_notify_time")
+	@ColumnType(length=255)
+	@ColumnComment("最后一次通知时间")
     private Date lastNotifyTime;
-
-// Getter and Setter methods
-
-    public Long getNotifyId() {
-        return this.notifyId;
-    }
-
-    public MchNotifyRecordEntity setNotifyId(Long notifyId) {
-        this.notifyId = notifyId;
-        return this;
-    }
-
-    public String getOrderId() {
-        return this.orderId;
-    }
-
-    public MchNotifyRecordEntity setOrderId(String orderId) {
-        this.orderId = orderId;
-        return this;
-    }
-
-    public Long getOrderType() {
-        return this.orderType;
-    }
-
-    public MchNotifyRecordEntity setOrderType(Long orderType) {
-        this.orderType = orderType;
-        return this;
-    }
-
-    public String getMchOrderNo() {
-        return this.mchOrderNo;
-    }
-
-    public MchNotifyRecordEntity setMchOrderNo(String mchOrderNo) {
-        this.mchOrderNo = mchOrderNo;
-        return this;
-    }
-
-    public String getMchNo() {
-        return this.mchNo;
-    }
-
-    public MchNotifyRecordEntity setMchNo(String mchNo) {
-        this.mchNo = mchNo;
-        return this;
-    }
-
-    public String getIsvNo() {
-        return this.isvNo;
-    }
-
-    public MchNotifyRecordEntity setIsvNo(String isvNo) {
-        this.isvNo = isvNo;
-        return this;
-    }
-
-    public String getAppId() {
-        return this.appId;
-    }
-
-    public MchNotifyRecordEntity setAppId(String appId) {
-        this.appId = appId;
-        return this;
-    }
-
-    public String getNotifyUrl() {
-        return this.notifyUrl;
-    }
-
-    public MchNotifyRecordEntity setNotifyUrl(String notifyUrl) {
-        this.notifyUrl = notifyUrl;
-        return this;
-    }
-
-    public String getResResult() {
-        return this.resResult;
-    }
-
-    public MchNotifyRecordEntity setResResult(String resResult) {
-        this.resResult = resResult;
-        return this;
-    }
-
-    public Long getNotifyCount() {
-        return this.notifyCount;
-    }
-
-    public MchNotifyRecordEntity setNotifyCount(Long notifyCount) {
-        this.notifyCount = notifyCount;
-        return this;
-    }
-
-    public Long getNotifyCountLimit() {
-        return this.notifyCountLimit;
-    }
-
-    public MchNotifyRecordEntity setNotifyCountLimit(Long notifyCountLimit) {
-        this.notifyCountLimit = notifyCountLimit;
-        return this;
-    }
-
-    public Long getState() {
-        return this.state;
-    }
-
-    public MchNotifyRecordEntity setState(Long state) {
-        this.state = state;
-        return this;
-    }
-
-    public Date getLastNotifyTime() {
-        return this.lastNotifyTime;
-    }
-
-    public MchNotifyRecordEntity setLastNotifyTime(Date lastNotifyTime) {
-        this.lastNotifyTime = lastNotifyTime;
-        return this;
-    }
-}
 

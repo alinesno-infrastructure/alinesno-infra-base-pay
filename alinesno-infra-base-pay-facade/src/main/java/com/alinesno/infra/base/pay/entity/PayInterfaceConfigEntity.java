@@ -1,5 +1,8 @@
 package com.alinesno.infra.base.pay.entity;
 
+import com.gitee.sunchenbin.mybatis.actable.annotation.ColumnComment;
+import com.gitee.sunchenbin.mybatis.actable.annotation.ColumnType;
+import lombok.Data;
 import com.alinesno.infra.common.facade.mapper.entity.InfraBaseEntity;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableName;
@@ -15,105 +18,62 @@ import java.math.BigDecimal;
  * @version 1.0.0
  */
 @TableName("pay_interface_config")
+@Data
 public class PayInterfaceConfigEntity extends InfraBaseEntity {
 
     /**
      * 账号类型:1-服务商 2-商户 3-商户应用
      */
     @TableField("info_type")
+	@ColumnType(length=255)
+	@ColumnComment("账号类型:1-服务商")
     private Long infoType;
 
     /**
      * 服务商号/商户号/应用ID
      */
     @TableField("info_id")
+	@ColumnType(length=255)
+	@ColumnComment("服务商号/商户号/应用ID")
     private String infoId;
 
     /**
      * 支付接口代码
      */
     @TableField("if_code")
+	@ColumnType(length=255)
+	@ColumnComment("支付接口代码")
     private String ifCode;
 
     /**
      * 接口配置参数,TEXT字符串
      */
     @TableField("if_params")
+	@ColumnType(length=255)
+	@ColumnComment("接口配置参数,TEXT字符串")
     private String ifParams;
 
     /**
      * 支付接口费率
      */
     @TableField("if_rate")
+	@ColumnType(length=255)
+	@ColumnComment("支付接口费率")
     private BigDecimal ifRate;
 
     /**
      * 状态: 0-停用, 1-启用
      */
     @TableField("state")
+	@ColumnType(length=255)
+	@ColumnComment("状态:")
     private Long state;
 
     /**
      * 备注
      */
     @TableField("remark")
+	@ColumnType(length=255)
+	@ColumnComment("备注")
     private String remark;
-
-    // Getter and Setter methods
-
-    public Long getInfoType() {
-        return this.infoType;
-    }
-
-    public void setInfoType(Long infoType) {
-        this.infoType = infoType;
-    }
-
-    public String getInfoId() {
-        return this.infoId;
-    }
-
-    public void setInfoId(String infoId) {
-        this.infoId = infoId;
-    }
-
-    public String getIfCode() {
-        return this.ifCode;
-    }
-
-    public void setIfCode(String ifCode) {
-        this.ifCode = ifCode;
-    }
-
-    public String getIfParams() {
-        return this.ifParams;
-    }
-
-    public void setIfParams(String ifParams) {
-        this.ifParams = ifParams;
-    }
-
-    public BigDecimal getIfRate() {
-        return this.ifRate;
-    }
-
-    public void setIfRate(BigDecimal ifRate) {
-        this.ifRate = ifRate;
-    }
-
-    public Long getState() {
-        return this.state;
-    }
-
-    public void setState(Long state) {
-        this.state = state;
-    }
-
-    public String getRemark() {
-        return this.remark;
-    }
-
-    public void setRemark(String remark) {
-        this.remark = remark;
-    }
 }
