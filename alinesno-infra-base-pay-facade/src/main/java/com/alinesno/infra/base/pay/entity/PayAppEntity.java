@@ -3,6 +3,7 @@ package com.alinesno.infra.base.pay.entity;
 import com.gitee.sunchenbin.mybatis.actable.annotation.ColumnComment;
 import com.gitee.sunchenbin.mybatis.actable.annotation.ColumnType;
 import lombok.Data;
+import com.baomidou.mybatisplus.annotation.TableField;
 /**
  * 功能名：支付应用实体类
  * 数据表：pay_app

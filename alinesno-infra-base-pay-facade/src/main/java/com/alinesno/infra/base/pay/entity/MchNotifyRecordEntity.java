@@ -27,8 +27,8 @@ public class MchNotifyRecordEntity extends InfraBaseEntity {
      */
     @Excel(name = "商户通知记录ID")
     @TableField("notify_id")
-	@ColumnType(length=255)
-	@ColumnComment("商户通知记录ID")
+    @ColumnType(length = 255)
+    @ColumnComment("商户通知记录ID")
     private Long notifyId;
 
     /**
@@ -36,8 +36,8 @@ public class MchNotifyRecordEntity extends InfraBaseEntity {
      */
     @Excel(name = "订单ID")
     @TableField("order_id")
-	@ColumnType(length=255)
-	@ColumnComment("订单ID")
+    @ColumnType(length = 255)
+    @ColumnComment("订单ID")
     private String orderId;
 
     /**
@@ -45,8 +45,8 @@ public class MchNotifyRecordEntity extends InfraBaseEntity {
      */
     @Excel(name = "订单类型:1-支付,2-退款")
     @TableField("order_type")
-	@ColumnType(length=255)
-	@ColumnComment("订单类型:1-支付,2-退款")
+    @ColumnType(length = 255)
+    @ColumnComment("订单类型:1-支付,2-退款")
     private Long orderType;
 
     /**
@@ -54,8 +54,8 @@ public class MchNotifyRecordEntity extends InfraBaseEntity {
      */
     @Excel(name = "商户订单号")
     @TableField("mch_order_no")
-	@ColumnType(length=255)
-	@ColumnComment("商户订单号")
+    @ColumnType(length = 255)
+    @ColumnComment("商户订单号")
     private String mchOrderNo;
 
     /**
@@ -63,8 +63,8 @@ public class MchNotifyRecordEntity extends InfraBaseEntity {
      */
     @Excel(name = "商户号")
     @TableField("mch_no")
-	@ColumnType(length=255)
-	@ColumnComment("商户号")
+    @ColumnType(length = 255)
+    @ColumnComment("商户号")
     private String mchNo;
 
     /**
@@ -72,8 +72,8 @@ public class MchNotifyRecordEntity extends InfraBaseEntity {
      */
     @Excel(name = "服务商号")
     @TableField("isv_no")
-	@ColumnType(length=255)
-	@ColumnComment("服务商号")
+    @ColumnType(length = 255)
+    @ColumnComment("服务商号")
     private String isvNo;
 
     /**
@@ -81,8 +81,8 @@ public class MchNotifyRecordEntity extends InfraBaseEntity {
      */
     @Excel(name = "应用ID")
     @TableField("app_id")
-	@ColumnType(length=255)
-	@ColumnComment("应用ID")
+    @ColumnType(length = 255)
+    @ColumnComment("应用ID")
     private String appId;
 
     /**
@@ -90,8 +90,8 @@ public class MchNotifyRecordEntity extends InfraBaseEntity {
      */
     @Excel(name = "通知地址")
     @TableField("notify_url")
-	@ColumnType(length=255)
-	@ColumnComment("通知地址")
+    @ColumnType(length = 255)
+    @ColumnComment("通知地址")
     private String notifyUrl;
 
     /**
@@ -99,8 +99,8 @@ public class MchNotifyRecordEntity extends InfraBaseEntity {
      */
     @Excel(name = "通知响应结果")
     @TableField("res_result")
-	@ColumnType(length=255)
-	@ColumnComment("通知响应结果")
+    @ColumnType(length = 255)
+    @ColumnComment("通知响应结果")
     private String resResult;
 
     /**
@@ -108,8 +108,8 @@ public class MchNotifyRecordEntity extends InfraBaseEntity {
      */
     @Excel(name = "通知次数")
     @TableField("notify_count")
-	@ColumnType(length=255)
-	@ColumnComment("通知次数")
+    @ColumnType(length = 255)
+    @ColumnComment("通知次数")
     private Long notifyCount;
 
     /**
@@ -117,8 +117,8 @@ public class MchNotifyRecordEntity extends InfraBaseEntity {
      */
     @Excel(name = "最大通知次数, 默认6次")
     @TableField("notify_count_limit")
-	@ColumnType(length=255)
-	@ColumnComment("最大通知次数,")
+    @ColumnType(length = 255)
+    @ColumnComment("最大通知次数,")
     private Long notifyCountLimit;
 
     /**
@@ -126,8 +126,8 @@ public class MchNotifyRecordEntity extends InfraBaseEntity {
      */
     @Excel(name = "通知状态,1-通知中,2-通知成功,3-通知失败")
     @TableField("state")
-	@ColumnType(length=255)
-	@ColumnComment("通知状态,1-通知中,2-通知成功,3-通知失败")
+    @ColumnType(length = 255)
+    @ColumnComment("通知状态,1-通知中,2-通知成功,3-通知失败")
     private Long state;
 
     /**
@@ -135,7 +135,7 @@ public class MchNotifyRecordEntity extends InfraBaseEntity {
      */
     @Excel(name = "最后一次通知时间", exportFormat = "yyyy-MM-dd")
     @TableField("last_notify_time")
-	@ColumnType(length=255)
-	@ColumnComment("最后一次通知时间")
+    @ColumnType(length = 255)
+    @ColumnComment("最后一次通知时间")
     private Date lastNotifyTime;
-
+}
