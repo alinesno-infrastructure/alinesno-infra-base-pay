@@ -134,26 +134,26 @@ public class CommonLoginController {
                 new Menu("Dashboard", "index", false, false , "dashboard", new Menu.Meta("概览", "dashboard", false, null))
         ));
 
-        Menu systemMenu = new Menu("System", "/system", false, "noRedirect", "Layout", true, new Menu.Meta("支付管理", "post", false, null),
+        Menu payMenu = new Menu("Pay", "/pay", false, "noRedirect", "Layout", true, new Menu.Meta("支付管理", "post", false, null),
                 List.of(
-                        new Menu("Tenant", "system/tenant/index", false,false,  "system/tenant/index", new Menu.Meta("商户管理", "tree", false, null)),
-                        new Menu("User", "system/user/index", false,false,  "system/user/index", new Menu.Meta("商户应用", "user", false, null)),
-                        new Menu("User", "system/user/index", false,false,  "system/user/index", new Menu.Meta("支付渠道", "user", false, null)),
-                        new Menu("User", "system/user/index", false,false,  "system/user/index", new Menu.Meta("渠道参数", "user", false, null))
+                        new Menu("MacInfo", "base/pay/macInfo/index", false,false,  "base/pay/macInfo/index", new Menu.Meta("商户管理", "tree", false, null)),
+                        new Menu("MacApp", "base/pay/macApp/index", false,false,  "base/pay/macApp/index", new Menu.Meta("商户应用", "user", false, null)),
+                        new Menu("MchPayPassage", "base/pay/mchPayPassage/index", false,false,  "base/pay/mchPayPassage/index", new Menu.Meta("支付渠道", "user", false, null)),
+                        new Menu("PayChannel", "base/pay/payChannel/index", false,false,  "base/pay/payChannel/index", new Menu.Meta("渠道参数", "user", false, null))
                 ));
 
-        Menu serviceMenu = new Menu("Log", "/log", false, "noRedirect", "Layout", true, new Menu.Meta("支付订单", "log", false, null),
+        Menu orderMenu = new Menu("Order", "/order", false, "noRedirect", "Layout", true, new Menu.Meta("支付订单", "log", false, null),
                         List.of(
-                                new Menu("Operlog", "monitor/operlog/index", false,false, "monitor/operlog/index", new Menu.Meta("支付订单", "form", false, null)),
-                                new Menu("Logininfor", "monitor/logininfor/index", false,false, "monitor/logininfor/index", new Menu.Meta("退款订单", "logininfor", false, null))));
+                                new Menu("PayOrder", "base/pay/payOrder/index", false,false, "base/pay/payOrder/index", new Menu.Meta("支付订单", "form", false, null)),
+                                new Menu("RefundOrder", "base/pay/refundOrder/index", false,false, "base/pay/refundOrder/index", new Menu.Meta("退款订单", "logininfor", false, null))));
 
-        Menu monitorMenu = new Menu("Monitor", "/monitor", false, "noRedirect", "Layout", true, new Menu.Meta("记录审计", "monitor", false, null),
+        Menu monitorMenu = new Menu("Record", "/record", false, "noRedirect", "Layout", true, new Menu.Meta("记录审计", "monitor", false, null),
                 List.of(
-                        new Menu("Online", "monitor/online/index", false,false, "monitor/online/index", new Menu.Meta("支付回调", "online", false, null)),
-                        new Menu("Job", "monitor/job/index", false,false, "monitor/job/index", new Menu.Meta("支付请求", "job", false, null))
+                        new Menu("PayCallback", "base/pay/payCallback/index", false,false, "base/pay/payCallback/index", new Menu.Meta("支付回调", "online", false, null)),
+                        new Menu("PayRequest", "base/pay/payRequest/index", false,false, "base/pay/payRequest/index", new Menu.Meta("支付请求", "job", false, null))
                 ));
 
-        List<Menu> menus = List.of(dashboardMenu , systemMenu, serviceMenu , monitorMenu) ;
+        List<Menu> menus = List.of(dashboardMenu , payMenu , orderMenu , monitorMenu) ;
 
         return AjaxResult.success(menus) ;
     }

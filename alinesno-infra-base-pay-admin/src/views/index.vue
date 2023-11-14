@@ -15,10 +15,6 @@
                   <i class="el-icon-monitor"></i>
                   {{ currentEnvClusterObj.clusterName }}
                 </span>
-                <span>
-                  <i class="el-icon-link"></i> 
-                  应用地址: {{ currentEnvClusterObj.apiServerUrl }}
-                </span>
               </div>
             </div>
             <div class="title-desc">

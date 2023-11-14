@@ -7,6 +7,7 @@ import cn.afterturn.easypoi.excel.annotation.Excel;
 import com.alinesno.infra.common.facade.mapper.entity.InfraBaseEntity;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableName;
+import lombok.EqualsAndHashCode;
 
 import java.util.Date;
 
@@ -53,6 +54,7 @@ import java.util.Date;
  * @author luoxiaodong
  * @version 1.0.0
  */
+@EqualsAndHashCode(callSuper = true)
 @TableName("pay_order")
 @Data
 public class PayOrderEntity extends InfraBaseEntity {

@@ -7,6 +7,7 @@ import cn.afterturn.easypoi.excel.annotation.Excel;
 import com.alinesno.infra.common.facade.mapper.entity.InfraBaseEntity;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableName;
+import lombok.EqualsAndHashCode;
 
 /**
  * 功能名：【请填写功能名称】
@@ -30,10 +31,11 @@ import com.baomidou.mybatisplus.annotation.TableName;
  * - @TableField没有length属性
  * - @TableField的value属性应该直接写在注解中，而不是作为value参数传递
  * - 类的字段也需要添加中文注释信息
- * 
- * 作者：zhuoguangming
- * 创建时间：2021-07-29 13:37:59
+ *
+ * @author luoxiaodong
+ * @version 1.0.0
  */
+@EqualsAndHashCode(callSuper = true)
 @TableName("mch_app")
 @Data
 public class MchAppEntity extends InfraBaseEntity {

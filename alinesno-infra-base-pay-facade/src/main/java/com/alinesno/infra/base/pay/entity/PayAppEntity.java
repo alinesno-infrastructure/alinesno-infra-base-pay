@@ -1,9 +1,13 @@
 package com.alinesno.infra.base.pay.entity;
 
+import com.alinesno.infra.common.facade.mapper.entity.InfraBaseEntity;
+import com.baomidou.mybatisplus.annotation.TableName;
 import com.gitee.sunchenbin.mybatis.actable.annotation.ColumnComment;
 import com.gitee.sunchenbin.mybatis.actable.annotation.ColumnType;
 import lombok.Data;
 import com.baomidou.mybatisplus.annotation.TableField;
+import lombok.EqualsAndHashCode;
+
 /**
  * 功能名：支付应用实体类
  * 数据表：pay_app
@@ -12,8 +16,10 @@ import com.baomidou.mybatisplus.annotation.TableField;
  * @author luoxiaodong
  * @version 1.0.0
  */
+@EqualsAndHashCode(callSuper = true)
+@TableName("pay_app")
 @Data
-public class PayAppEntity {
+public class PayAppEntity extends InfraBaseEntity {
 
     /**
      * 支付私钥
