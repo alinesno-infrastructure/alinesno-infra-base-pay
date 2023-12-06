@@ -1,4 +1,4 @@
-package com.alinesno.infra.base.pay.api.provider;
+package com.alinesno.infra.base.pay.gateway.provider;
 
 import com.alinesno.infra.base.pay.adapter.support.HttpRequestNoticeParams;
 import com.egzosn.pay.common.api.PayMessageInterceptor;

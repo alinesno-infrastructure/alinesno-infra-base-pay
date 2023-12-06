@@ -1,4 +1,4 @@
-package com.alinesno.infra.base.pay.api.interceptor;
+package com.alinesno.infra.base.pay.gateway.interceptor;
 
 import com.egzosn.pay.ali.api.AliPayService;
 import com.egzosn.pay.ali.bean.AliPayMessage;

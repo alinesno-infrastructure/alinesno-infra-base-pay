@@ -1,4 +1,4 @@
-package com.alinesno.infra.base.pay.api.handlers;
+package com.alinesno.infra.base.pay.gateway.handlers;
 
 import com.egzosn.pay.common.api.PayMessageHandler;
 import com.egzosn.pay.common.api.PayService;

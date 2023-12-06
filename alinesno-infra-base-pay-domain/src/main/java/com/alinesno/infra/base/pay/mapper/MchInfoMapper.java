@@ -3,6 +3,7 @@ package com.alinesno.infra.base.pay.mapper;
 
 import com.alinesno.infra.base.pay.entity.MchInfoEntity;
 import com.alinesno.infra.common.facade.mapper.repository.IBaseMapper;
+import org.apache.ibatis.annotations.Mapper;
 
 /**
  * 资产编目Mapper接口
@@ -10,5 +11,6 @@ import com.alinesno.infra.common.facade.mapper.repository.IBaseMapper;
  * @author luoxiaodong
  * @since 1.0.0
  */
+@Mapper
 public interface MchInfoMapper extends IBaseMapper<MchInfoEntity> {
 }

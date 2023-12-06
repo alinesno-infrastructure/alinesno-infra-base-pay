@@ -25,12 +25,12 @@
         <module>alinesno-infra-base-pay-facade</module>  <!-- 接口和引用 -->
         <module>alinesno-infra-base-pay-domain</module>  <!-- 领域服务 -->
         <module>alinesno-infra-base-pay-adapter</module> <!-- 适配层 -->
-        <module>alinesno-infra-base-pay-api</module>  <!-- 接口服务 -->
+        <module>alinesno-infra-base-pay-gateway</module>  <!-- 接口服务 -->
         <module>alinesno-infra-base-pay-client</module>  <!-- 对外引用 -->
         <module>alinesno-infra-base-pay-boot</module>  <!-- 启动服务 -->
 
         <!-- 前端服务
-        <module>alinesno-infra-base-pay-admin</module>
+        <module>alinesno-infra-base-pay-ui</module>
         -->
     </modules>
 
