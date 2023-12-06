@@ -1,8 +1,8 @@
-package com.alinesno.infra.base.pay.api.config;
+package com.alinesno.infra.base.pay.gateway.config;
 
-import com.alinesno.infra.base.pay.api.handlers.AliPayMessageHandler;
-import com.alinesno.infra.base.pay.api.handlers.WxPayMessageHandler;
-import com.alinesno.infra.base.pay.api.interceptor.AliPayMessageInterceptor;
+import com.alinesno.infra.base.pay.gateway.handlers.AliPayMessageHandler;
+import com.alinesno.infra.base.pay.gateway.handlers.WxPayMessageHandler;
+import com.alinesno.infra.base.pay.gateway.interceptor.AliPayMessageInterceptor;
 import com.egzosn.pay.spring.boot.core.PayServiceConfigurer;
 import com.egzosn.pay.spring.boot.core.configurers.MerchantDetailsServiceConfigurer;
 import com.egzosn.pay.spring.boot.core.configurers.PayMessageConfigurer;

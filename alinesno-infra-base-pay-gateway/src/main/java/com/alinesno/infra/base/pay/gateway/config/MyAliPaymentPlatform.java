@@ -1,4 +1,4 @@
-package com.alinesno.infra.base.pay.api.config;
+package com.alinesno.infra.base.pay.gateway.config;
 
 import com.egzosn.pay.ali.api.AliPayConfigStorage;
 import com.egzosn.pay.ali.api.AliPayService;

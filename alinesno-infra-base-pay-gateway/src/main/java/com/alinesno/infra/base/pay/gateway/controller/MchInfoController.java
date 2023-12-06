@@ -1,4 +1,4 @@
-package com.alinesno.infra.base.pay.api.controller;
+package com.alinesno.infra.base.pay.gateway.controller;
 
 import com.alinesno.infra.base.pay.entity.MchInfoEntity;
 import com.alinesno.infra.base.pay.service.IMchInfoService;
@@ -9,8 +9,6 @@ import com.alinesno.infra.common.web.adapter.rest.BaseController;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang.builder.ToStringBuilder;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.ui.Model;
