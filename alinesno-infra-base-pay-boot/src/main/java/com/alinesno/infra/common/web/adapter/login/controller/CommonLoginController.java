@@ -134,12 +134,17 @@ public class CommonLoginController {
                 new Menu("Dashboard", "index", false, false , "dashboard", new Menu.Meta("概览", "dashboard", false, null))
         ));
 
+        Menu projectMenu = new Menu("PayApp", "/payApp", false, "noRedirect", "Layout", true, new Menu.Meta("项目管理", "clipboard", false, null),
+                List.of(
+                        new Menu("Project", "base/pay/payApp/index", false,false,  "base/pay/payApp/index", new Menu.Meta("项目管理", "druid", false, null))
+                ));
+
         Menu payMenu = new Menu("Pay", "/pay", false, "noRedirect", "Layout", true, new Menu.Meta("支付管理", "post", false, null),
                 List.of(
                         new Menu("MacInfo", "base/pay/macInfo/index", false,false,  "base/pay/macInfo/index", new Menu.Meta("商户管理", "tree", false, null)),
                         new Menu("MacApp", "base/pay/macApp/index", false,false,  "base/pay/macApp/index", new Menu.Meta("商户应用", "user", false, null)),
-                        new Menu("MchPayPassage", "base/pay/mchPayPassage/index", false,false,  "base/pay/mchPayPassage/index", new Menu.Meta("支付渠道", "user", false, null)),
-                        new Menu("PayChannel", "base/pay/payChannel/index", false,false,  "base/pay/payChannel/index", new Menu.Meta("渠道参数", "user", false, null))
+                        new Menu("MchPayPassage", "base/pay/mchPayPassage/index", false,false,  "base/pay/mchPayPassage/index", new Menu.Meta("支付渠道", "education", false, null)),
+                        new Menu("PayChannel", "base/pay/payChannel/index", false,false,  "base/pay/payChannel/index", new Menu.Meta("渠道参数", "link", false, null))
                 ));
 
         Menu orderMenu = new Menu("Order", "/order", false, "noRedirect", "Layout", true, new Menu.Meta("支付订单", "log", false, null),
@@ -153,7 +158,7 @@ public class CommonLoginController {
                         new Menu("PayRequest", "base/pay/payRequest/index", false,false, "base/pay/payRequest/index", new Menu.Meta("支付请求", "job", false, null))
                 ));
 
-        List<Menu> menus = List.of(dashboardMenu , payMenu , orderMenu , monitorMenu) ;
+        List<Menu> menus = List.of(dashboardMenu , projectMenu , payMenu , orderMenu , monitorMenu) ;
 
         return AjaxResult.success(menus) ;
     }

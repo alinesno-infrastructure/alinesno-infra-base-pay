@@ -131,7 +131,7 @@ import {
    getApplication,
    updateApplication,
    addApplication
-} from "@/api/base/pay/macInfo";
+} from "@/api/base/pay/macApp";
 
 const router = useRouter();
 const { proxy } = getCurrentInstance();

@@ -18,7 +18,7 @@
               </div>
             </div>
             <div class="title-desc">
-              集群状态展示集群资源的概览和详情，您可以查看集群资源的监控数据和用量排行情况。
+                  {{ currentEnvClusterObj.desc }}
             </div>
           </div>
         </div>
@@ -45,8 +45,8 @@ import OperationWorkspaceService from './operation-workspace/service.vue'
 
 const currentEnvClusterObj = ref({
   appName: '聚合支付管理服务'  , 
-  clusterName: '统一权限管理服务'  , 
-  apiServerUrl: 'http://portal.infra.linesno.com'
+  clusterName: '通用的多渠道支付管理服务'  , 
+  desc: '基础研发能力提供一体化、多渠道支付解决方案的应用程序'  , 
 }) 
 
 </script>

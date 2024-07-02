@@ -32,11 +32,16 @@ export const constantRoutes = [
     component: () => import('@/views/login'),
     hidden: true
   },
-   {
+  {
      path: '/sso/login',
      component: () => import('@/views/loginSso'),
      hidden: true
-   },
+  },
+  {
+    path: '/payDemo',
+    component: () => import('@/views/payDemo'),
+    hidden: true
+  },
   {
     path: "/:pathMatch(.*)*",
     component: () => import('@/views/error/404'),

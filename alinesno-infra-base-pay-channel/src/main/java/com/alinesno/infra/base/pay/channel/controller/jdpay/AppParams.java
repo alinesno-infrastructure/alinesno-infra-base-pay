@@ -1,0 +1,37 @@
+/**
+ * <p>IJPay 让支付触手可及，封装了微信支付、支付宝支付、银联支付常用的支付方式以及各种常用的接口。</p>
+ *
+ * <p>不依赖任何第三方 mvc 框架，仅仅作为工具使用简单快速完成支付模块的开发，可轻松嵌入到任何系统里。 </p>
+ *
+ * <p>IJPay 交流群: </p>
+ *
+ * <p>Node.js 版: <a href="https://gitee.com/javen205/TNWX">https://gitee.com/javen205/TNWX</a></p>
+ *
+ * <p> 京东APP支付 </p>
+ *
+ * @author Javen
+ */
+package com.alinesno.infra.base.pay.channel.controller.jdpay;
+
+import lombok.Data;
+
+@Data
+public class AppParams {
+	private String orderId;
+	private String merchant;
+	private String appId;
+	private String signData;
+	private String extraInfo;
+
+	public AppParams() {
+	}
+
+	public AppParams(String orderId, String merchant, String appId, String signData, String extraInfo) {
+		this.orderId = orderId;
+		this.merchant = merchant;
+		this.appId = appId;
+		this.signData = signData;
+		this.extraInfo = extraInfo;
+	}
+
+}
