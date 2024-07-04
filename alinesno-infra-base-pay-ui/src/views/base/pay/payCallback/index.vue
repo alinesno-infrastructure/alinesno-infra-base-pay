@@ -126,11 +126,11 @@
 <script setup name="Application">
 
 import {
-   listApplication,
-   delApplication,
-   getApplication,
-   updateApplication,
-   addApplication
+   listMchInfo,
+   delMchInfo,
+   getMchInfo,
+   updateMchInfo,
+   addMchInfo
 } from "@/api/base/pay/mchInfo";
 
 const router = useRouter();
@@ -184,7 +184,7 @@ const { queryParams, form, rules } = toRefs(data);
 /** 查询应用列表 */
 function getList() {
    loading.value = true;
-   listApplication(proxy.addDateRange(queryParams.value, dateRange.value)).then(res => {
+   listMchInfo(proxy.addDateRange(queryParams.value, dateRange.value)).then(res => {
       loading.value = false;
       ApplicationList.value = res.rows;
       total.value = res.total;
@@ -209,7 +209,7 @@ function resetQuery() {
 function handleDelete(row) {
    const ApplicationIds = row.id || ids.value;
    proxy.$modal.confirm('是否确认删除应用编号为"' + ApplicationIds + '"的数据项？').then(function () {
-      return delApplication(ApplicationIds);
+      return delMchInfo(ApplicationIds);
    }).then(() => {
       getList();
       proxy.$modal.msgSuccess("删除成功");
@@ -254,7 +254,7 @@ function handleAdd() {
 function handleUpdate(row) {
    reset();
    const ApplicationId = row.id || ids.value;
-   getApplication(ApplicationId).then(response => {
+   getMchInfo(ApplicationId).then(response => {
       form.value = response.data;
       open.value = true;
       title.value = "修改应用";
@@ -266,13 +266,13 @@ function submitForm() {
    proxy.$refs["databaseRef"].validate(valid => {
       if (valid) {
          if (form.value.ApplicationId != undefined) {
-            updateApplication(form.value).then(response => {
+            updateMchInfo(form.value).then(response => {
                proxy.$modal.msgSuccess("修改成功");
                open.value = false;
                getList();
             });
          } else {
-            addApplication(form.value).then(response => {
+            addMchInfo(form.value).then(response => {
                proxy.$modal.msgSuccess("新增成功");
                open.value = false;
                getList();
