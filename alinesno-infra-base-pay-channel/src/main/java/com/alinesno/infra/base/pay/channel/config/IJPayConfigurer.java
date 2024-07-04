@@ -1,6 +1,8 @@
 package com.alinesno.infra.base.pay.channel.config;
 
+import com.alibaba.fastjson.serializer.SerializeConfig;
 import com.alibaba.fastjson.serializer.SerializerFeature;
+import com.alibaba.fastjson.serializer.ToStringSerializer;
 import com.alibaba.fastjson.support.config.FastJsonConfig;
 import com.alibaba.fastjson.support.spring.FastJsonHttpMessageConverter;
 import com.alinesno.infra.base.pay.channel.interceptor.AliPayInterceptor;
@@ -14,7 +16,7 @@ import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupport;
 
-import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -51,10 +53,18 @@ public class IJPayConfigurer extends WebMvcConfigurationSupport {
 
 			SerializerFeature.WriteNullBooleanAsFalse, // 将Boolean类型的null转成false
 
+
 			SerializerFeature.DisableCircularReferenceDetect);// 避免循环引用
 
+		//3.设置Long为字符串
+		SerializeConfig serializeConfig = SerializeConfig.globalInstance;
+		serializeConfig.put(Long.class, ToStringSerializer.instance);
+		serializeConfig.put(Long.TYPE, ToStringSerializer.instance);
+
+		config.setSerializeConfig(serializeConfig);
+
 		converter.setFastJsonConfig(config);
-		converter.setDefaultCharset(Charset.forName("UTF-8"));
+		converter.setDefaultCharset(StandardCharsets.UTF_8);
 		List<MediaType> mediaTypeList = new ArrayList<>();
 		// 解决中文乱码问题，相当于在Controller上的@RequestMapping中加了个属性produces = "application/json"
 		mediaTypeList.add(MediaType.APPLICATION_JSON);
@@ -66,6 +76,6 @@ public class IJPayConfigurer extends WebMvcConfigurationSupport {
 
 	@Bean
 	public HttpMessageConverter<String> responseBodyConverter() {
-		return new StringHttpMessageConverter(Charset.forName("UTF-8"));
+		return new StringHttpMessageConverter(StandardCharsets.UTF_8);
 	}
 }

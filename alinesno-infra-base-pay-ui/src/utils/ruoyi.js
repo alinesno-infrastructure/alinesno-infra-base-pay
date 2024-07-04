@@ -46,6 +46,29 @@ export function parseTime(time, pattern) {
   return time_str
 }
 
+// 解析金额，传入的是分单位（字符串类型），返回的是元单位，并精确到后面两位小数
+export function parseAmount(amountStr) {
+
+  if(amountStr == null || amountStr == ''){
+    amountStr = '0' ;
+  }
+
+  // 首先确保传入的参数可以被转换为数字
+  const amount = Number(amountStr);
+  
+  if (isNaN(amount)) {
+    throw new Error('Invalid amount: the amount string cannot be converted to a number');
+  }
+
+  // 将分转换为元，即除以100
+  let result = amount / 100;
+
+  // 使用toFixed(2)函数将结果四舍五入到小数点后两位
+  result = parseFloat(result.toFixed(2));
+
+  return result;
+}
+
 // 表单重置
 export function resetForm(refName) {
   if (this.$refs[refName]) {

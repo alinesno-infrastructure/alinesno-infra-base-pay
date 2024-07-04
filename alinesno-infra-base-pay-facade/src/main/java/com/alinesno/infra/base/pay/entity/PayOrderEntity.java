@@ -107,6 +107,11 @@ public class PayOrderEntity extends InfraBaseEntity {
 	@ColumnComment("类型:")
     private Long mchType;
 
+    @TableField("way_name")
+    @ColumnType(length=64)
+    @ColumnComment("支付方式名称")
+    private String wayName ;
+
     /**
      * 商户订单号
      */

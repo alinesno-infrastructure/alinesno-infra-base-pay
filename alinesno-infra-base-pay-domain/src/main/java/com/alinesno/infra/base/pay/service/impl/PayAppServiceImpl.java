@@ -1,7 +1,7 @@
 package com.alinesno.infra.base.pay.service.impl;
 
 import com.alinesno.infra.base.pay.entity.PayAppEntity;
-import com.alinesno.infra.base.pay.enums.ProviderChannelEnum;
+import com.alinesno.infra.base.pay.enums.PayChannelEnum;
 import com.alinesno.infra.base.pay.mapper.PayAppMapper;
 import com.alinesno.infra.base.pay.service.IPayAppService;
 import com.alinesno.infra.common.core.service.impl.IBaseServiceImpl;
@@ -66,7 +66,7 @@ public class PayAppServiceImpl extends IBaseServiceImpl<PayAppEntity, PayAppMapp
         project.setProjectName("默认监控应用");
         project.setProjectDesc("包含所有的监控渠道查看权限，用于开发和验证场景");
         project.setProjectCode(code);
-        project.setDocumentType(ProviderChannelEnum.getAllNameStr());
+        project.setDocumentType(PayChannelEnum.getAllNameStr());
 
         save(project) ;
     }

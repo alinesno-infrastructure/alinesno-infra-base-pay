@@ -19,125 +19,125 @@
             <el-row :gutter="10" class="mb8">
 
                <el-col :span="1.5">
-                  <el-button type="primary" plain icon="Plus" @click="handleAdd">新增</el-button>
-               </el-col>
-               <el-col :span="1.5">
-                  <el-button type="success" plain icon="Edit" :disabled="single" @click="handleUpdate">修改</el-button>
-               </el-col>
-               <el-col :span="1.5">
                   <el-button type="danger" plain icon="Delete" :disabled="multiple" @click="handleDelete">删除</el-button>
                </el-col>
 
                <right-toolbar v-model:showSearch="showSearch" @queryTable="getList" :columns="columns"></right-toolbar>
             </el-row>
 
-            <el-table v-loading="loading" :data="ApplicationList" @selection-change="handleSelectionChange">
-               <el-table-column type="selection" width="50" align="center" />
-               <el-table-column label="图标" align="center" with="80" key="status" v-if="columns[5].visible">
-               </el-table-column>
+            <el-table v-loading="loading" :data="PayOrderList" @selection-change="handleSelectionChange">
+                  <el-table-column type="selection" width="50" align="center" />
 
-               <!-- 业务字段-->
-               <el-table-column label="应用名称" align="center" key="dbName" prop="dbName" v-if="columns[0].visible" />
-               <el-table-column label="应用描述" align="center" key="dbDesc" prop="dbDesc" v-if="columns[1].visible" :show-overflow-tooltip="true" />
-               <el-table-column label="表数据量" align="center" key="nickName" prop="nickName" v-if="columns[2].visible" :show-overflow-tooltip="true" />
-               <el-table-column label="类型" align="center" key="dbType" prop="dbType" v-if="columns[3].visible" :show-overflow-tooltip="true" />
-               <el-table-column label="应用地址" align="center" key="jdbcUrl" prop="jdbcUrl" v-if="columns[4].visible" width="120" />
-               <el-table-column label="状态" align="center" key="hasStatus" v-if="columns[5].visible" />
+                  <!-- 业务字段-->
+                  <el-table-column label="支付金额" align="center" key="amount" prop="amount" v-if="columns[0].visible">
+                     <template #default="scope">
+                           <span> <i class="fa-solid fa-dollar-sign"></i>{{ parseAmount(scope.row.amount) }}</span>
+                     </template>
+                  </el-table-column>
+                  <el-table-column label="退款金额" align="center" key="refundAmount" prop="refundAmount" v-if="columns[1].visible" :show-overflow-tooltip="true">
+                     <template #default="scope">
+                           <span><i class="fa-solid fa-dollar-sign"></i>{{ parseAmount(scope.row.refundAmount) }}</span>
+                     </template>
+                  </el-table-column>
+                  <el-table-column label="手续费" align="center" key="mchFeeAmount" prop="mchFeeAmount" v-if="columns[2].visible" :show-overflow-tooltip="true">
+                     <template #default="scope">
+                           <span><i class="fa-solid fa-dollar-sign"></i>{{ parseAmount(scope.row.mchFeeAmount) }}</span>
+                     </template>
+                  </el-table-column>
+                  <el-table-column label="商户名称" align="center" key="mchName" prop="mchName" v-if="columns[3].visible" :show-overflow-tooltip="true" />
+                  <el-table-column label="订单号" align="center" width="300" key="mchOrderNo" prop="mchOrderNo" v-if="columns[4].visible" :show-overflow-tooltip="true">
+                     <template #default="scope">
+                        <div style="margin-top: 5px;" v-if="scope.row.payOrderId">
+                           <el-button type="primary" bg text> <i class="fa-solid fa-credit-card"></i> 支付: {{ scope.row.payOrderId }}</el-button>
+                        </div>
+                        <div style="margin-top: 5px;" v-if="scope.row.mchOrderNo">
+                           <el-button type="success" bg text> <i class="fa-brands fa-shopify"></i> 商户: {{ scope.row.mchOrderNo }}</el-button>
+                        </div>
+                        <div style="margin-top: 5px;" v-if="scope.row.channelOrderNo">
+                           <el-button type="danger" bg text> <i class="fa-solid fa-lemon"></i> 渠道: {{ scope.row.channelOrderNo }}</el-button>
+                        </div>
+                     </template>
+                  </el-table-column>
+                  <el-table-column label="支付方式" align="center" key="wayName" prop="wayName" v-if="columns[5].visible" :show-overflow-tooltip="true">
+                     <template #default="scope">
+                        <div v-if="scope.row.wayCode == 'WX_H5'">
+                           <el-button type="info" bg text> <i class="fa-brands fa-weixin"></i> 微信H5</el-button>
+                        </div>
+                        <div v-if="scope.row.wayCode == 'ALI_QR'">
+                           <el-button type="info" bg text> <i class="fa-brands fa-alipay"></i> 支付宝二维码</el-button>
+                        </div>
+                        <div v-if="scope.row.wayCode == 'WX_NATIVE'">
+                           <el-button type="info" bg text> <i class="fa-brands fa-weixin"></i> 微信扫码</el-button>
+                        </div>
+                     </template>
+                  </el-table-column>
 
-               <el-table-column label="添加时间" align="center" prop="addTime" v-if="columns[6].visible" width="160">
-                  <template #default="scope">
-                     <span>{{ parseTime(scope.row.addTime) }}</span>
-                  </template>
-               </el-table-column>
+                  <el-table-column label="支付状态" align="center" key="state" prop="state" v-if="columns[6].visible" :show-overflow-tooltip="true">
+                     <template #default="scope">
+                        <div v-if="scope.row.state == 6">
+                           <el-button type="success" bg text> <i class="fa-solid fa-link"></i> 支付成功</el-button>
+                        </div>
+                        <div v-if="scope.row.state == 3">
+                           <el-button type="danger" bg text> <i class="fa-solid fa-link"></i> 支付失败</el-button>
+                        </div>
+                     </template>
+                  </el-table-column>
 
-               <!-- 操作字段  -->
-               <el-table-column label="操作" align="center" width="150" class-name="small-padding fixed-width">
-                  <template #default="scope">
-                     <el-tooltip content="修改" placement="top" v-if="scope.row.ApplicationId !== 1">
-                        <el-button link type="primary" icon="Edit" @click="handleUpdate(scope.row)"
-                           v-hasPermi="['system:Application:edit']"></el-button>
-                     </el-tooltip>
-                     <el-tooltip content="删除" placement="top" v-if="scope.row.ApplicationId !== 1">
-                        <el-button link type="primary" icon="Delete" @click="handleDelete(scope.row)"
-                           v-hasPermi="['system:Application:remove']"></el-button>
-                     </el-tooltip>
-                  </template>
+                  <el-table-column label="回调状态" align="center" key="notifyState" prop="notifyState" v-if="columns[7].visible" :show-overflow-tooltip="true">
+                     <template #default="scope">
+                        <div v-if="scope.row.notifyState == 1">
+                           <el-button type="danger" bg text> <i class="fa-solid fa-truck-fast"></i> 未发送</el-button>
+                        </div>
+                        <div v-if="scope.row.notifyState == 0">
+                           <el-button type="info" bg text> <i class="fa-solid fa-truck-fast"></i>  已发送</el-button>
+                        </div>
+                     </template>
+                  </el-table-column>
 
-               </el-table-column>
-            </el-table>
+                  <el-table-column label="添加时间" align="center" key="createdAt" prop="createdAt" v-if="columns[8].visible" width="160">
+                     <template #default="scope">
+                           <span>{{ parseTime(scope.row.addTime ) }}</span>
+                     </template>
+                  </el-table-column>
+
+                  <!-- 操作字段  -->
+                  <el-table-column label="操作" align="center" width="80" class-name="small-padding fixed-width">
+                     <template #default="scope">
+                           <el-tooltip content="详情" placement="top" v-if="scope.row.PayOrderId !== 1">
+                              <el-button link type="primary" icon="Edit" @click="handleUpdate(scope.row)"
+                                 v-hasPermi="['system:PayOrder:edit']"></el-button>
+                           </el-tooltip>
+                           <el-tooltip content="删除" placement="top" v-if="scope.row.PayOrderId !== 1">
+                              <el-button link type="primary" icon="Delete" @click="handleDelete(scope.row)"
+                                 v-hasPermi="['system:PayOrder:remove']"></el-button>
+                           </el-tooltip>
+                     </template>
+                  </el-table-column>
+               </el-table>
+
+
             <pagination v-show="total > 0" :total="total" v-model:page="queryParams.pageNum" v-model:limit="queryParams.pageSize" @pagination="getList" />
          </el-col>
       </el-row>
 
-      <!-- 添加或修改应用配置对话框 -->
-      <el-dialog :title="title" v-model="open" width="900px" append-to-body>
-         <el-form :model="form" :rules="rules" ref="databaseRef" label-width="100px">
-            <el-row>
-               <el-col :span="24">
-                  <el-form-item label="名称" prop="dbName">
-                     <el-input v-model="form.dbName" placeholder="请输入应用名称" maxlength="50" />
-                  </el-form-item>
-               </el-col>
-            </el-row>
-            <el-row>
-               <el-col :span="24">
-                  <el-form-item label="连接" prop="jdbcUrl">
-                     <el-input v-model="form.jdbcUrl" placeholder="请输入jdbcUrl连接地址" maxlength="128" />
-                  </el-form-item>
-               </el-col>
-               <el-col :span="24">
-                  <el-form-item label="类型" prop="dbType">
-                     <el-input v-model="form.dbType" placeholder="请输入类型" maxlength="50" />
-                  </el-form-item>
-               </el-col>
-            </el-row>
-            <el-row>
-               <el-col :span="24">
-                  <el-form-item label="用户名" prop="dbUsername">
-                     <el-input v-model="form.dbUsername" placeholder="请输入连接用户名" maxlength="30" />
-                  </el-form-item>
-               </el-col>
-               <el-col :span="24">
-                  <el-form-item label="密码" prop="dbPasswd">
-                     <el-input v-model="form.dbPasswd" placeholder="请输入应用密码" type="password" maxlength="30" show-password />
-                  </el-form-item>
-               </el-col>
-            </el-row>
-
-            <el-row>
-               <el-col :span="24">
-                  <el-form-item label="备注" prop="dbDesc">
-                     <el-input v-model="form.dbDesc" placeholder="请输入应用备注"></el-input>
-                  </el-form-item>
-               </el-col>
-            </el-row>
-         </el-form>
-         <template #footer>
-            <div class="dialog-footer">
-               <el-button type="primary" @click="submitForm">确 定</el-button>
-               <el-button @click="cancel">取 消</el-button>
-            </div>
-         </template>
-      </el-dialog>
-
    </div>
 </template>
 
-<script setup name="Application">
+<script setup name="PayOrder">
 
 import {
-   listApplication,
-   delApplication,
-   getApplication,
-   updateApplication,
-   addApplication
+   listPayOrder,
+   delPayOrder,
+   getPayOrder,
+   updatePayOrder,
+   addPayOrder
 } from "@/api/base/pay/payOrder";
 
 const router = useRouter();
 const { proxy } = getCurrentInstance();
 
 // 定义变量
-const ApplicationList = ref([]);
+const PayOrderList = ref([]);
 const open = ref(false);
 const loading = ref(true);
 const showSearch = ref(true);
@@ -152,14 +152,17 @@ const roleOptions = ref([]);
 
 // 列显隐信息
 const columns = ref([
-   { key: 0, label: `应用名称`, visible: true },
-   { key: 1, label: `应用描述`, visible: true },
-   { key: 2, label: `表数据量`, visible: true },
-   { key: 3, label: `类型`, visible: true },
-   { key: 4, label: `应用地址`, visible: true },
-   { key: 5, label: `状态`, visible: true },
-   { key: 6, label: `更新时间`, visible: true }
+    { key: 0, label: `支付金额`, visible: true },
+    { key: 1, label: `退款金额`, visible: true },
+    { key: 2, label: `手续费`, visible: true },
+    { key: 3, label: `商户名称`, visible: true },
+    { key: 4, label: `订单号`, visible: true },
+    { key: 5, label: `支付方式`, visible: true },
+    { key: 6, label: `支付状态`, visible: true },
+    { key: 7, label: `回调状态`, visible: true },
+    { key: 8, label: `添加时间`, visible: true }
 ]);
+
 
 const data = reactive({
    form: {},
@@ -184,9 +187,9 @@ const { queryParams, form, rules } = toRefs(data);
 /** 查询应用列表 */
 function getList() {
    loading.value = true;
-   listApplication(proxy.addDateRange(queryParams.value, dateRange.value)).then(res => {
+   listPayOrder(proxy.addDateRange(queryParams.value, dateRange.value)).then(res => {
       loading.value = false;
-      ApplicationList.value = res.rows;
+      PayOrderList.value = res.rows;
       total.value = res.total;
    });
 };
@@ -207,9 +210,9 @@ function resetQuery() {
 };
 /** 删除按钮操作 */
 function handleDelete(row) {
-   const ApplicationIds = row.id || ids.value;
-   proxy.$modal.confirm('是否确认删除应用编号为"' + ApplicationIds + '"的数据项？').then(function () {
-      return delApplication(ApplicationIds);
+   const PayOrderIds = row.id || ids.value;
+   proxy.$modal.confirm('是否确认删除应用编号为"' + PayOrderIds + '"的数据项？').then(function () {
+      return delPayOrder(PayOrderIds);
    }).then(() => {
       getList();
       proxy.$modal.msgSuccess("删除成功");
@@ -228,7 +231,7 @@ function reset() {
    form.value = {
       id: undefined,
       deptId: undefined,
-      ApplicationName: undefined,
+      PayOrderName: undefined,
       nickName: undefined,
       password: undefined,
       phonenumber: undefined,
@@ -253,8 +256,8 @@ function handleAdd() {
 /** 修改按钮操作 */
 function handleUpdate(row) {
    reset();
-   const ApplicationId = row.id || ids.value;
-   getApplication(ApplicationId).then(response => {
+   const PayOrderId = row.id || ids.value;
+   getPayOrder(PayOrderId).then(response => {
       form.value = response.data;
       open.value = true;
       title.value = "修改应用";
@@ -265,14 +268,14 @@ function handleUpdate(row) {
 function submitForm() {
    proxy.$refs["databaseRef"].validate(valid => {
       if (valid) {
-         if (form.value.ApplicationId != undefined) {
-            updateApplication(form.value).then(response => {
+         if (form.value.PayOrderId != undefined) {
+            updatePayOrder(form.value).then(response => {
                proxy.$modal.msgSuccess("修改成功");
                open.value = false;
                getList();
             });
          } else {
-            addApplication(form.value).then(response => {
+            addPayOrder(form.value).then(response => {
                proxy.$modal.msgSuccess("新增成功");
                open.value = false;
                getList();

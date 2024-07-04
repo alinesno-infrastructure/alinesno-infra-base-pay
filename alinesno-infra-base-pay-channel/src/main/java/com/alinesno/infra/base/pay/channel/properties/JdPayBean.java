@@ -2,7 +2,6 @@ package com.alinesno.infra.base.pay.channel.properties;
 
 import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;
-import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Component;
 
 /**
@@ -20,7 +19,7 @@ import org.springframework.stereotype.Component;
  */
 @Data
 @Component
-@PropertySource("classpath:/jdpay.properties")
+//@PropertySource("classpath:/jdpay.properties")
 @ConfigurationProperties(prefix = "jdpay")
 public class JdPayBean {
 

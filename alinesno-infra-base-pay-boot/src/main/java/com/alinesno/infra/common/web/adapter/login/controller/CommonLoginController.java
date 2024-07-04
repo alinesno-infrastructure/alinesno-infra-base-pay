@@ -3,6 +3,7 @@ package com.alinesno.infra.common.web.adapter.login.controller;
 import com.alinesno.infra.common.facade.response.AjaxResult;
 import com.alinesno.infra.common.web.adapter.dto.LoginBodyDto;
 import com.alinesno.infra.common.web.adapter.dto.menus.Menu;
+import org.jetbrains.annotations.NotNull;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -134,32 +135,33 @@ public class CommonLoginController {
                 new Menu("Dashboard", "index", false, false , "dashboard", new Menu.Meta("概览", "dashboard", false, null))
         ));
 
-        Menu projectMenu = new Menu("PayApp", "/payApp", false, "noRedirect", "Layout", true, new Menu.Meta("项目管理", "clipboard", false, null),
+        Menu projectMenu = new Menu("PayApp", "/payApp", false, "noRedirect", "Layout", true, new Menu.Meta("商户管理", "clipboard", false, null),
                 List.of(
-                        new Menu("Project", "base/pay/payApp/index", false,false,  "base/pay/payApp/index", new Menu.Meta("项目管理", "druid", false, null))
+                        new Menu("MchInfo", "base/pay/mchInfo/index", false,false,  "base/pay/mchInfo/index", new Menu.Meta("商户管理", "tree", false, null)),
+                        new Menu("MchApp", "base/pay/mchApp/index", false,false,  "base/pay/mchApp/index", new Menu.Meta("商户应用", "user", false, null)),
+                        new Menu("MchPayPassage", "base/pay/payChannel/index", false,false,  "base/pay/payChannel/index", new Menu.Meta("支付渠道", "education", false, null))
                 ));
 
-        Menu payMenu = new Menu("Pay", "/pay", false, "noRedirect", "Layout", true, new Menu.Meta("支付管理", "post", false, null),
-                List.of(
-                        new Menu("MacInfo", "base/pay/macInfo/index", false,false,  "base/pay/macInfo/index", new Menu.Meta("商户管理", "tree", false, null)),
-                        new Menu("MacApp", "base/pay/macApp/index", false,false,  "base/pay/macApp/index", new Menu.Meta("商户应用", "user", false, null)),
-                        new Menu("MchPayPassage", "base/pay/mchPayPassage/index", false,false,  "base/pay/mchPayPassage/index", new Menu.Meta("支付渠道", "education", false, null)),
-                        new Menu("PayChannel", "base/pay/payChannel/index", false,false,  "base/pay/payChannel/index", new Menu.Meta("渠道参数", "link", false, null))
-                ));
+        List<Menu> menus = getMenus(dashboardMenu, projectMenu);
 
+        return AjaxResult.success(menus) ;
+    }
+
+    @NotNull
+    private static List<Menu> getMenus(Menu dashboardMenu, Menu projectMenu) {
         Menu orderMenu = new Menu("Order", "/order", false, "noRedirect", "Layout", true, new Menu.Meta("支付订单", "log", false, null),
                         List.of(
                                 new Menu("PayOrder", "base/pay/payOrder/index", false,false, "base/pay/payOrder/index", new Menu.Meta("支付订单", "form", false, null)),
-                                new Menu("RefundOrder", "base/pay/refundOrder/index", false,false, "base/pay/refundOrder/index", new Menu.Meta("退款订单", "logininfor", false, null))));
+                                new Menu("RefundOrder", "base/pay/refundOrder/index", false,false, "base/pay/refundOrder/index", new Menu.Meta("退款订单", "logininfor", false, null)),
+                                new Menu("TransferOrder", "base/pay/transferOrder/index", false,false, "base/pay/transferOrder/index", new Menu.Meta("转账订单", "link", false, null)),
+                                new Menu("MchNotify", "base/pay/mchNotify/index", false,false, "base/pay/mchNotify/index", new Menu.Meta("商户通知", "people", false, null))
+                        ));
 
         Menu monitorMenu = new Menu("Record", "/record", false, "noRedirect", "Layout", true, new Menu.Meta("记录审计", "monitor", false, null),
                 List.of(
-                        new Menu("PayCallback", "base/pay/payCallback/index", false,false, "base/pay/payCallback/index", new Menu.Meta("支付回调", "online", false, null)),
-                        new Menu("PayRequest", "base/pay/payRequest/index", false,false, "base/pay/payRequest/index", new Menu.Meta("支付请求", "job", false, null))
+                        new Menu("PayRequest", "base/pay/apiRecord/index", false,false, "base/pay/apiRecord/index", new Menu.Meta("支付请求", "job", false, null))
                 ));
 
-        List<Menu> menus = List.of(dashboardMenu , projectMenu , payMenu , orderMenu , monitorMenu) ;
-
-        return AjaxResult.success(menus) ;
+        return List.of(dashboardMenu, projectMenu,  orderMenu , monitorMenu);
     }
 }

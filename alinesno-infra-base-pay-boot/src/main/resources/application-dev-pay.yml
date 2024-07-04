@@ -1,0 +1,110 @@
+# 阿里支付相关配置
+alipay:
+  # 支付宝公钥证书路径
+  aliPayCertPath: 支付宝公钥证书
+  # 支付宝根证书路径
+  aliPayRootCertPath: 支付宝根证书
+  # 应用公钥证书路径
+  appCertPath: 应用公钥证书
+  # 应用的ID
+  appId: 应用编号
+  # 外网访问项目的域名，用于支付通知
+  domain: 外网访问项目的域名，支付通知中会使用
+  # 应用私钥
+  privateKey: 应用私钥
+  # 支付宝公钥，通常在证书模式下由应用公钥上传到支付宝开放平台获得
+  publicKey: 支付宝公钥，通过应用公钥上传到支付宝开放平台换取支付宝公钥(如果是证书模式，公钥与私钥在CSR目录)。
+  # 支付宝支付网关地址，沙箱环境或正式环境
+  serverUrl: 支付宝支付网关，沙箱环境时设置为 https://openapi.alipaydev.com/gateway.do 使用正式环境时设置为 https://openapi.alipay.com/gateway.do
+
+# 京东支付相关配置
+jdpay:
+  # 证书路径
+  certPath: xx
+  # DES密钥
+  desKey: xx
+  # 商户ID
+  mchId: xx
+  # RSA私钥
+  rsaPrivateKey: xx
+  # RSA公钥
+  rsaPublicKey: xx
+
+# PayPal支付相关配置
+paypal:
+  # 客户端ID
+  clientId: clientId
+  # 域名
+  domain: domain
+  # 是否使用沙盒环境
+  sandBox: true
+  # 秘钥
+  secret: secret
+
+# 微信子商户支付相关配置
+subwxpay:
+  # 服务商的应用编号
+  appId: 服务商的应用编号
+  # 服务商的appSecret
+  appSecret: 服务商的 appSecret
+  # 证书路径
+  certPath: apiclient_cert.p1 证书路径，在服务商微信商户后台下载
+  # 外网访问项目的域名，用于支付通知
+  domain: 外网访问项目的域名，支付通知中会使用
+  # 微信支付商户号
+  mchId: 微信支付商户号
+  # API密钥
+  partnerKey: API 密钥
+  # 子商户号的应用编号
+  subAppId: 子商户号的应用编号
+  # 子商户的appSecret
+  subAppSecret: 子商户的appSecret
+  # 子商户号
+  subMchId: 子商户号
+
+# 银联支付相关配置
+union:
+  # 外网访问项目的域名，用于支付通知
+  domain: 外网访问项目的域名，支付通知中会使用
+  # 密钥
+  key: 密钥
+  # 商户号
+  machId: 商户号
+  # 银联支付网关地址
+  serverUrl: https://qra.95516.com/pay/gateway
+
+# 微信支付相关配置
+wxpay:
+  # 应用编号
+  appId: 应用编号
+  # appSecret是appId对应的接口密码，用于微信公众号授权获取用户openId
+  appSecret: appSecret 是 appId 对应的接口密码，微信公众号授权获取用户 openId 时使用
+  # 证书路径
+  certPath: apiclient_cert.p1 证书路径，在微信商户后台下载
+  # 外网访问项目的域名，用于支付通知
+  domain: 外网访问项目的域名，支付通知中会使用
+  # 微信支付商户号
+  mchId: 微信支付商户号
+  # API密钥
+  partnerKey: API 密钥
+
+# 版本3支付相关配置
+v3:
+  # Api密钥
+  apiKey: Api 密钥
+  # Api-v3密钥
+  apiKey3: Api-v3 密钥
+  # 应用编号
+  appId: 应用编号
+  # .p12格式的证书路径
+  certP12Path: cert.p12
+  # .pem格式的证书路径
+  certPath: cert.pem
+  # 域名
+  domain: https://ijpay.javen.com
+  # .pem格式的密钥路径
+  keyPath: key.pem
+  # 微信商户号
+  mchId: 微信商户号
+  # 平台证书路径
+  platformCertPath: wx_cert.pem
